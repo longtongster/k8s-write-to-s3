@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pytorch-train-example
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      serviceAccountName: s3-access-sa
+      containers:
+      - name: pytorch-container
+        image: longtong/pytorch
+        imagePullPolicy: Always
+        command: ["python", "./code/train.py"]
+        #command: ["/bin/bash", "-c", "while true; do sleep 660; done"]
+      restartPolicy: OnFailure

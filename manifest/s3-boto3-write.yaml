@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boto3-writer
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boto3-writer
+  template:
+    metadata:
+      labels:
+        app: boto3-writer
+    spec:
+      serviceAccountName: s3-access-sa
+      containers:
+      - name: boto3-writer
+        image: longtong/boto3-writer:latest
+        imagePullPolicy: Always
+        #command: ["/bin/bash", "-c", "while true; do sleep 660; done"]
