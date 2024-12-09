@@ -1,4 +1,4 @@
-Objective:
+## Objective:
 
 Summarize all steps to create a simple kubernetes deployment that runs a contianer with python code. The python code uses boto3 to write data (later a pytorch model) to s3.
 
